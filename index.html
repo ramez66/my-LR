@@ -18,7 +18,6 @@
     --font-ar: 'Lateef', serif; /* خط عربي أنيق */
     --font-en: 'Playfair Display', serif; /* خط رومنسي فاخر */
     --transition-speed: 0.4s;  /* سرعة الانتقال الافتراضية للـ hover */
-    /* لون جديد للخلفية البراقة */
     --bg-sparkle: #2C1318;
 }
 
@@ -44,19 +43,16 @@ body {
 /* 🆕 منطق منع التمرير وحجب الأقسام */
 /* ======================================= */
 
-/* الفئة التي ستُضاف إلى الـ <body> عند تحميل الصفحة */
 .scroll-locked {
     overflow: hidden; /* منع التمرير بالكامل */
 }
 
-/* حجب جميع الأقسام ما عدا الهيدر (#intro) */
 .scroll-locked main {
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    pointer-events: none; /* لمنع التفاعل حتى بعد إظهارها */
+    pointer-events: none; /* منع التفاعل حتى بعد إظهارها */
 }
 
-/* عند إزالة الفئة، نظهر باقي الأقسام */
 body:not(.scroll-locked) main {
     opacity: 1;
     pointer-events: auto;
@@ -74,7 +70,6 @@ body:not(.scroll-locked) main {
     align-items: center;
     text-align: center;
     position: relative;
-    /* خلفية ناعمة مع تدرج خفيف */
     background: radial-gradient(circle at center, var(--bg-sparkle) 0%, var(--bg-dark) 100%);
     border-bottom: 1px solid rgba(154, 88, 104, 0.2); /* فاصل خفيف وانيق */
 }
@@ -135,10 +130,7 @@ body:not(.scroll-locked) main {
     min-height: 100vh;
     justify-content: center;
     position: relative;
-    /* خلفية داكنة مع تدرج مركزي للإيحاء بالإضاءة الخافتة */
     background: radial-gradient(circle at center, rgba(154, 88, 104, 0.2) 0%, var(--bg-dark) 80%);
-    /* تأثير خفيف: يمكنك إضافة صورة خلفية رومانسية هنا */
-    /* background-image: url('path/to/romantic-bg.jpg'); */
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -147,7 +139,6 @@ body:not(.scroll-locked) main {
 .hero-content {
     z-index: 10;
     max-width: 900px;
-    /* تحسين مركزية النص */
     padding: 20px;
 }
 
@@ -176,15 +167,14 @@ body:not(.scroll-locked) main {
     margin-top: 30px;
 }
 
-/* الخط الرأسي المركزي */
 .timeline-container::after {
     content: '';
     position: absolute;
-    width: 4px; /* أسمك قليلاً */
-    background: linear-gradient(to bottom, var(--accent-velvet), var(--text-light)); /* تدرج لوني */
+    width: 4px;
+    background: linear-gradient(to bottom, var(--accent-velvet), var(--text-light));
     top: 0;
     bottom: 0;
-    right: 50%; /* في المنتصف */
+    right: 50%;
     margin-right: -2px;
 }
 
@@ -192,11 +182,10 @@ body:not(.scroll-locked) main {
     padding: 10px 40px;
     position: relative;
     width: 50%;
-    opacity: 0; /* مخفية حتى يتم تفعيل AOS */
+    opacity: 0;
     transition: opacity var(--transition-speed) ease;
 }
 
-/* العناصر الفردية (يمنى ويسرى) */
 .timeline-item:nth-child(odd) {
     right: 0;
     text-align: right;
@@ -208,13 +197,12 @@ body:not(.scroll-locked) main {
     text-align: left;
 }
 
-/* الدائرة الفاخرة كنقطة في التايم لاين */
 .timeline-item::after {
-    content: '★'; /* رمز نجمة بدل الدائرة لإضافة جمالية */
+    content: '★';
     position: absolute;
     width: 30px;
     height: 30px;
-    line-height: 25px; /* لتوسيط النجمة */
+    line-height: 25px;
     text-align: center;
     background-color: var(--bg-dark);
     color: var(--text-light);
@@ -226,13 +214,12 @@ body:not(.scroll-locked) main {
     box-shadow: 0 0 10px var(--accent-velvet);
 }
 
-/* تحديد موقع الدائرة بناءً على يمين أو يسار */
 .timeline-item:nth-child(odd)::after {
-    right: -15px; /* يمين الخط */
+    right: -15px;
 }
 
 .timeline-item:nth-child(even)::after {
-    right: calc(50% - 15px); /* يسار الخط */
+    right: calc(50% - 15px);
 }
 
 .timeline-date {
@@ -276,9 +263,9 @@ body:not(.scroll-locked) main {
 }
 
 .love-card {
-    background-color: var(--bg-sparkle); /* خلفية براقة */
+    background-color: var(--bg-sparkle);
     border: 1px solid rgba(244, 235, 208, 0.3);
-    border-radius: 20px; /* زوايا أكثر استدارة */
+    border-radius: 20px;
     padding: 35px;
     width: 300px;
     flex-grow: 1;
@@ -287,7 +274,7 @@ body:not(.scroll-locked) main {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     text-align: right;
     position: relative;
-    overflow: hidden; /* لإخفاء الزوايا الزائدة عند الزخرفة */
+    overflow: hidden;
 }
 
 .love-card::before {
@@ -303,14 +290,13 @@ body:not(.scroll-locked) main {
 .love-card h3 {
     font-family: var(--font-en);
     color: var(--accent-velvet);
-    font-size: 1.8rem; /* أكبر قليلاً */
+    font-size: 1.8rem;
     margin-bottom: 15px;
     border-bottom: 2px solid rgba(154, 88, 104, 0.7);
     padding-bottom: 5px;
     position: relative;
 }
 
-/* تأثير Hover راقٍ على الكروت */
 .love-card:hover {
     transform: translateY(-10px) rotateZ(-0.7deg);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px var(--text-light);
@@ -324,17 +310,17 @@ body:not(.scroll-locked) main {
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 900px; /* أكبر قليلاً */
-    height: 500px; /* ارتفاع ثابت أكبر للمُتزلج */
+    max-width: 900px;
+    height: 500px;
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 0 70px rgba(0, 0, 0, 0.7);
-    border: 5px solid var(--accent-velvet); /* إطار أكثر وضوحاً */
+    border: 5px solid var(--accent-velvet);
 }
 
 .slider-track {
     display: flex;
-    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); /* انتقال أكثر حيوية */
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
     height: 100%;
 }
 
@@ -349,14 +335,14 @@ body:not(.scroll-locked) main {
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: brightness(0.9); /* جعل الصور أغمق قليلاً لتناسب الثيم الداكن */
+    filter: brightness(0.9);
 }
 
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(154, 88, 104, 0.7); /* لون التأكيد */
+    background: rgba(154, 88, 104, 0.7);
     color: var(--text-light);
     border: none;
     padding: 20px 15px;
@@ -373,12 +359,12 @@ body:not(.scroll-locked) main {
 }
 
 .prev-btn {
-    right: 0;
+    left: 0;
     border-radius: 10px 0 0 10px;
 }
 
 .next-btn {
-    left: 0;
+    right: 0;
     border-radius: 0 10px 10px 0;
 }
 
@@ -398,12 +384,12 @@ body:not(.scroll-locked) main {
 
 .letter-box {
     background-color: var(--shadow-color);
-    padding: 60px; /* توسيع البادينغ */
+    padding: 60px;
     border-radius: 25px;
     max-width: 750px;
     width: 90%;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.6), inset 0 0 25px var(--bg-dark);
-    border: 3px double var(--accent-velvet); /* إطار مزدوج فاخر */
+    border: 3px double var(--accent-velvet);
     text-align: right;
 }
 
@@ -419,9 +405,8 @@ body:not(.scroll-locked) main {
 }
 
 .handwriting-text {
-    /* محاكاة لخط اليد الفاخر باستخدام خط Lateef */
     font-family: var(--font-ar);
-    font-size: 1.5rem; /* حجم أكبر */
+    font-size: 1.5rem;
     line-height: 2.5;
     color: var(--text-light);
     text-shadow: 0 0 7px rgba(244, 235, 208, 0.4);
@@ -432,6 +417,19 @@ body:not(.scroll-locked) main {
 /* 7. تنسيق السؤال النهائي (#proposal) */
 /* ======================================================= */
 
+/* حاوية الأزرار relative لتحريك زر "لا" داخلها */
+.question-buttons {
+    display: flex;
+    gap: 70px;
+    margin-top: 40px;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* مهم لتحريك زر "لا" داخله */
+    min-height: 160px; /* مساحة للحركات على الجوال */
+    padding: 20px;
+    overflow: hidden; /* لإبقاء الزر داخل الحاوية بصريًا */
+}
+
 .final-question {
     min-height: 70vh;
     justify-content: center;
@@ -440,23 +438,18 @@ body:not(.scroll-locked) main {
 
 .question-text {
     font-family: var(--font-en);
-    font-size: 3.5rem; /* أكبر وأكثر تأثيراً */
+    font-size: 3.5rem;
     color: var(--text-light);
     margin: 50px 0;
     text-shadow: 0 0 20px rgba(244, 235, 208, 0.9);
-}
-
-.question-buttons {
-    display: flex;
-    gap: 70px; /* مسافة أكبر */
-    margin-top: 40px;
 }
 
 .answer-btn {
     font-size: 1.3rem;
     padding: 18px 50px;
     min-width: 200px;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* حركة زنبركية */
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
 }
 
 .yes-btn {
@@ -470,12 +463,19 @@ body:not(.scroll-locked) main {
     transform: translateY(-10px) scale(1.15) rotateZ(-1deg);
 }
 
+/* زر "لا" (مراوغ) */
 .no-btn {
     background-color: transparent;
     border-color: var(--text-light);
     color: var(--text-light);
-    position: relative;
+    position: absolute; /* سنجعله مطلق داخل الحاوية */
     box-shadow: 0 0 10px var(--text-light);
+    touch-action: none; /* نتحكم باللمس برمجياً */
+    user-select: none;
+    -webkit-user-select: none;
+    will-change: transform;
+    transition: transform 0.28s cubic-bezier(.22,1,.36,1);
+    pointer-events: auto;
 }
 
 .no-btn:hover {
@@ -552,24 +552,46 @@ body:not(.scroll-locked) main {
     }
 
     .question-text {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        padding: 0 10px;
     }
 
     .question-buttons {
         gap: 20px;
         flex-direction: column;
+        align-items: center;
+        min-height: 220px; /* مساحة أكبر للجوال */
     }
-}</style>
+
+    .answer-btn {
+        min-width: 160px;
+        padding: 14px 30px;
+    }
+
+    .hero-title {
+        line-height: 1.05;
+    }
+}
+
+/* تحسينات لشاشات صغيرة جدًا */
+@media (max-width: 420px) {
+    .hero-title { font-size: 2.4rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .section { padding: 60px 6% 80px; }
+    .letter-box { padding: 30px; }
+    .question-text { font-size: 1.8rem; }
+    .question-buttons { min-height: 260px; }
+}
+</style>
 <body class="scroll-locked">
 
     <header id="intro" class="section luxury-hero">
         <div class="hero-content">
             <h1 class="hero-title" data-aos="fade-up">لأنكِ أنتِ.. اكتملت الرواية</h1>
             <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">دعيني أروي لكِ كيف بدأت أجمل قصص الحب.</p>
-<a href="#story" class="start-journey-btn luxury-btn" data-aos="zoom-in" data-aos-delay="600" id="startJourneyBtn">ابدئي الرحلة ❤️</a>
+            <a href="#story" class="start-journey-btn luxury-btn" data-aos="zoom-in" data-aos-delay="600" id="startJourneyBtn">ابدئي الرحلة ❤️</a>
         </div>
         <audio id="bgMusic" src="Ragheb Alama - Nasini El Donya _ Official Music Video _ راغب علامة - نسينى الدنيا(MP3_160K).mp3" loop></audio>
-
     </header>
 
     <main>
@@ -590,27 +612,6 @@ body:not(.scroll-locked) main {
                         <p>همسة حب أولى، أكدت ما كان ينمو في القلب. وعد صامت لم نعلن عنه إلا بالعيون.</p>
                     </div>
                 </div>
-                   <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="timeline-date">2021/08/22</div>
-                    <div class="timeline-content">
-                        <h3>الاعتراف: بداية الأبد</h3>
-                        <p>همسة حب أولى، أكدت ما كان ينمو في القلب. وعد صامت لم نعلن عنه إلا بالعيون.</p>
-                    </div>
-                </div>
-                   <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="timeline-date">2021/08/22</div>
-                    <div class="timeline-content">
-                        <h3>الاعتراف: بداية الأبد</h3>
-                        <p>همسة حب أولى، أكدت ما كان ينمو في القلب. وعد صامت لم نعلن عنه إلا بالعيون.</p>
-                    </div>
-                </div>
-                   <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="timeline-date">2021/08/22</div>
-                    <div class="timeline-content">
-                        <h3>الاعتراف: بداية الأبد</h3>
-                        <p>همسة حب أولى، أكدت ما كان ينمو في القلب. وعد صامت لم نعلن عنه إلا بالعيون.</p>
-                    </div>
-                </div>
                 <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
                     <div class="timeline-date">2022/12/31</div>
                     <div class="timeline-content">
@@ -618,9 +619,7 @@ body:not(.scroll-locked) main {
                         <p>في ليلة رأس السنة، قررنا أن تكون بدايتنا الحقيقية نحو مستقبل مشترك لا ينتهي.</p>
                     </div>
                 </div>
-                
-                </div>
-                
+            </div>
         </section>
 
         <section id="why-i-love-you" class="section love-cards">
@@ -639,25 +638,8 @@ body:not(.scroll-locked) main {
                     <p>أحب صلابتكِ التي لا تظهر إلا في الأوقات الصعبة، أنتِ سندي ومرساتي.</p>
                 </div>
             </div>
-            
         </section>
- <section id="why-i-love-you" class="section love-cards">
 
-                <div class="love-card" data-aos="zoom-in">
-                    <h3>هدوء روحك</h3>
-                    <p>أحب السكينة التي تغلف كلماتك، والأمان الذي أجده في صمتك.</p>
-                </div>
-                <div class="love-card" data-aos="zoom-in" data-aos-delay="200">
-                    <h3>عينيكِ</h3>
-                    <p>أحب النظرة التي تحمل ألف كلمة لم تقال بعد، نورها لا يخفت أبدًا.</p>
-                </div>
-                <div class="love-card" data-aos="zoom-in" data-aos-delay="400">
-                    <h3>قوتكِ الهادئة</h3>
-                    <p>أحب صلابتكِ التي لا تظهر إلا في الأوقات الصعبة، أنتِ سندي ومرساتي.</p>
-                </div>
-            </div>
-            
-        </section>
         <section id="memories" class="section memories-gallery">
             <h2 class="section-title" data-aos="fade-right">📸 ذكريات لا تُنسى</h2>
             <div class="slider-container" data-aos="fade-up">
@@ -677,7 +659,7 @@ body:not(.scroll-locked) main {
                 <h3 class="letter-title">رسالة إلى الأبدية...</h3>
                 <p class="handwriting-text">
                     حبيبتي،<br><br>
-                    منذ أن دخلتِ حياتي، تحوّل العالم إلى قصيدة. أنتِ الهدوء الذي أبحث عنه في خضم صخب الأيام، واللون الذي يزين لوحة روحي. كل يوم معكِ هو فصل جديد من السعادة التي لا أستطيع أن أصفها إلا بأنها "معجزة". أكتب إليكِ بقلب ممتلئ بالشكر على كل لحظة، وعلى كل إحساس عميق زرعتِه في صدري. أحبكِ اليوم أكثر من الأمس، وسأحبكِ غدًا أكثر من اليوم. <br><br>
+                    منذ أن دخلتِ حياتي، تحوّل العالم إلى قصيدة. أنتِ الهدوء الذي أبحث عنه في خضم صخب الأيام، واللون الذهبي الذي يضيء لي لياليَّ...
                     إلى شريكة روحي... وإلى الأبد.
                 </p>
             </div>
@@ -686,9 +668,9 @@ body:not(.scroll-locked) main {
         <section id="proposal" class="section final-question">
             <h2 class="section-title" data-aos="zoom-in">💖 سؤال عميق يحدد المصير...</h2>
             <h3 class="question-text" data-aos="zoom-in" data-aos-delay="300">هل تقبلين أن نكمل القصة معًا... إلى الأبد؟</h3>
-            <div class="question-buttons">
+            <div class="question-buttons" aria-hidden="false">
                 <button id="yes-btn" class="luxury-btn answer-btn yes-btn" data-aos="fade-right" data-aos-delay="500">نعم، إلى الأبد!</button>
-                <button id="no-btn" class="luxury-btn answer-btn no-btn" data-aos="fade-left" data-aos-delay="700">لا</button>
+                <button id="no-btn" class="luxury-btn answer-btn no-btn" data-aos="fade-left" data-aos-delay="700" aria-hidden="false" aria-label="لا">لا</button>
             </div>
         </section>
     </main>
@@ -702,8 +684,8 @@ body:not(.scroll-locked) main {
             duration: 1200, // مدة الأنميشن بالمللي ثانية
             once: true,    // تفعيل الأنميشن مرة واحدة فقط عند التمرير إليها
         });
-        
     </script>
+
 <script>
 document.getElementById("startJourneyBtn").addEventListener("click", function() {
     const music = document.getElementById("bgMusic");
@@ -720,31 +702,27 @@ const startJourneyBtn = document.getElementById("startJourneyBtn");
 const body = document.body;
 
 startJourneyBtn.addEventListener("click", function(e) {
-    e.preventDefault(); // منع انتقال الرابط الافتراضي مؤقتاً
+    e.preventDefault();
 
-    // 1. تشغيل الموسيقى
     const music = document.getElementById("bgMusic");
-    music.currentTime = 20; // تبدأ من 20 ثانية
+    music.currentTime = 20;
     music.play().catch(error => {
         console.log("المتصفح منع التشغيل التلقائي:", error);
-        // يمكن إضافة رسالة للمستخدم للضغط على أي مكان لتشغيل الصوت
     });
 
-    // 2. إلغاء قفل التمرير وإظهار محتوى الصفحة
     body.classList.remove("scroll-locked");
-    
-    // 3. التمرير إلى القسم الأول من القصة (#story)
+
     setTimeout(() => {
         const storySection = document.getElementById("story");
         if (storySection) {
             storySection.scrollIntoView({ behavior: 'smooth' });
         }
-    }, 500); // تأخير بسيط لضمان إزالة القفل أولاً
+    }, 500);
 });
 
 
 /* ======================================================= */
-/* 1. منطق معرض الذكريات (Slider) النظيف */
+/* 1. منطق معرض الذكريات (Slider) */
 /* ======================================================= */
 
 const sliderTrack = document.querySelector('.slider-track');
@@ -753,22 +731,18 @@ const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 let currentSlide = 0;
 
-// نحتاج إلى إعادة حساب عرض الشريحة في كل مرة يتم استخدامها
 function getSlideWidth() {
      return slides.length > 0 ? slides[0].clientWidth : 0;
 }
 
-// وظيفة تحديث موقع شريط التمرير
 function updateSlider() {
     const slideWidth = getSlideWidth();
     if (slideWidth > 0) {
-        // يحرك شريط التمرير أفقيًا بمقدار (الشريحة الحالية * عرض الشريحة)
         const offset = -currentSlide * slideWidth;
         sliderTrack.style.transform = `translateX(${offset}px)`;
     }
 }
 
-// السلايدر يعمل بشكل دائري (Loop)
 function nextSlide() {
     currentSlide = (currentSlide + 1) % slides.length;
     updateSlider();
@@ -779,55 +753,157 @@ function prevSlide() {
     updateSlider();
 }
 
-// ربط الأزرار بالوظائف
 if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
-// تحديث عرض الشريحة عند تغيير حجم الشاشة
 window.addEventListener('resize', () => {
     updateSlider();
 });
 
-// تشغيل تلقائي للسلايدر (اختياري، 5 ثواني)
 if (slides.length > 1) {
     setInterval(nextSlide, 5000);
 }
 
 
 /* ======================================================= */
-/* 2. منطق زر "لا" الذي يتحرك بلطف */
+/* 2. زر "لا" مراوغ — يجعل الضغط مستحيلاً */
+/*    يعمل على الديسكتوب والجوال (اللمس) بشكل عدواني */
 /* ======================================================= */
 
 const noBtn = document.getElementById('no-btn');
+const yesBtn = document.getElementById('yes-btn');
+const questionButtons = document.querySelector('.question-buttons');
 
-if (noBtn) {
-    noBtn.addEventListener('mouseover', (e) => {
-        // نحصل على أبعاد وحالة زر "لا"
-        const rect = noBtn.getBoundingClientRect();
+if (noBtn && questionButtons) {
+    // نضع الزر مبدئياً في منتصف الحاوية
+    function setInitialPosition() {
+        const cRect = questionButtons.getBoundingClientRect();
+        const bRect = noBtn.getBoundingClientRect();
+        const left = Math.max(8, Math.round((cRect.width - bRect.width) / 2));
+        const top = Math.max(8, Math.round((cRect.height - bRect.height) / 2));
+        noBtn.style.position = 'absolute';
+        noBtn.style.transform = `translate(${left}px, ${top}px)`;
+    }
+    setInitialPosition();
 
-        // نحدد منطقة حركة معقولة (مثلاً ضمن 300 بكسل أفقيًا و 150 بكسل رأسيًا من موقعه الأصلي)
-        const movementRangeX = 300;
-        const movementRangeY = 150;
+    // دالة مساعدة لاحتواء القيم
+    function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
-        // نولد إحداثيات عشوائية جديدة ضمن هذه المنطقة
-        // يتم استخدام (Math.random() - 0.5) * 2 لإنشاء رقم عشوائي بين -1 و 1
-        const newPosX = (Math.random() - 0.5) * movementRangeX;
-        const newPosY = (Math.random() - 0.5) * movementRangeY;
+    // نتحقق من مسافة المؤشر إلى مركز الزر ونحركه بعيداً
+    function evadeFromPoint(clientX, clientY) {
+        const container = questionButtons.getBoundingClientRect();
+        const btn = noBtn.getBoundingClientRect();
 
-        // تطبيق الحركة باستخدام transform
-        noBtn.style.position = 'relative'; // ليعمل الـ translate بشكل صحيح داخل الأب
-        noBtn.style.transition = 'transform 0.4s ease-out';
-        noBtn.style.transform = `translate(${newPosX}px, ${newPosY}px) rotateZ(${(Math.random() - 0.5) * 8}deg)`; // دوران أكبر قليلاً
+        // نحسب إحداثيات المؤشر داخل الحاوية
+        const pointerX = clientX - container.left;
+        const pointerY = clientY - container.top;
+
+        // مركز الزر الحالي
+        const btnCenterX = (btn.left + btn.right) / 2 - container.left;
+        const btnCenterY = (btn.top + btn.bottom) / 2 - container.top;
+
+        // المسافة بين المؤشر ومركز الزر
+        const dx = btnCenterX - pointerX;
+        const dy = btnCenterY - pointerY;
+        const dist = Math.hypot(dx, dy) || 1;
+
+        // نريد الزر بعيداً بمقدار على الأقل minDistance
+        const minDistance = Math.max(120, Math.min(container.width, container.height) * 0.35);
+
+        // إذا كان المؤشر قريبًا جدًا، نحسب موضع جديد بعيدًا عن المؤشر
+        if (dist < minDistance + 40) {
+            // اتجاه الحركة (وحدة)
+            const ux = dx / dist;
+            const uy = dy / dist;
+
+            // مسافة الحركة العشوائية (تأكد من البقاء داخل الحاوية)
+            const moveDist = minDistance + 40 + Math.random() * Math.max(container.width, container.height) * 0.25;
+
+            // الموضع الجديد لمركز الزر داخل الحاوية
+            let newCenterX = pointerX + (-ux * moveDist);
+            let newCenterY = pointerY + (-uy * moveDist);
+
+            // حدود لتضمن بقاء الزر مرئيًا بالكامل داخل الحاوية
+            const maxLeft = container.width - (btn.width || 60) - 8;
+            const maxTop = container.height - (btn.height || 36) - 8;
+            newCenterX = clamp(newCenterX - (btn.width / 2), 8, maxLeft);
+            newCenterY = clamp(newCenterY - (btn.height / 2), 8, maxTop);
+
+            // تطبيق الحركة بسلاسة
+            noBtn.style.transition = 'transform 0.28s cubic-bezier(.22,1,.36,1)';
+            noBtn.style.transform = `translate(${Math.round(newCenterX)}px, ${Math.round(newCenterY)}px) rotate(${(Math.random()-0.5)*30}deg)`;
+        }
+    }
+
+    // عند تحريك المؤشر داخل الحاوية، نبتعد باستمرار (يغطي كل الحالات desktop & touch via pointermove)
+    questionButtons.addEventListener('pointermove', (e) => {
+        // نحرك الزر بعيدًا عن نقطة المؤشر
+        evadeFromPoint(e.clientX, e.clientY);
+    }, { passive: true });
+
+    // عند دخول مؤشر إلى الزر — رد فوري
+    noBtn.addEventListener('pointerenter', (e) => {
+        evadeFromPoint(e.clientX, e.clientY);
     });
 
-    noBtn.addEventListener('click', (e) => {
-        // رسالة لطيفة إذا حاول المستخدم الضغط على "لا"
+    // عند محاولة اللمس مباشرةً — نمنع الحدث ونحركه قبل أن يُسجَّل الضغــط
+    noBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // يمنع تسجيل النقر
+        const t = e.touches[0];
+        evadeFromPoint(t.clientX, t.clientY);
+    }, { passive: false });
+
+    // تغطية حالات النقر السريعة (mousedown / click) — نمنع أي تفاعل
+    noBtn.addEventListener('mousedown', (e) => {
         e.preventDefault();
-        alert("هل أنتِ متأكدة من أنكِ تريدين محاولة الضغط على (لا)؟ حاولي مجددًا 😉");
-        
-        // إعادة الزر إلى مكانه الأصلي بعد الضغط
-        noBtn.style.transform = 'translate(0, 0) rotateZ(0deg)';
+        evadeFromPoint(e.clientX, e.clientY);
     });
+    noBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // إظهار رسالة لطيفة — لكنه لن يُضغط فعليًا
+        // ملاحظة: لا نهدر تجربة المستخدم كثيرًا، لذا رسالة قصيرة فقط
+        // (يمكنك إزالة السطر التالي إذا لا تريد أي نافذة منبثقة)
+        // alert("هاها! (لا) لا تريد أن تُضغط 😉");
+        // نحرّك الزر بعيدًا أيضاً
+        // Use center of viewport fallback
+        const fallbackX = window.innerWidth / 2;
+        const fallbackY = window.innerHeight / 2;
+        evadeFromPoint(fallbackX, fallbackY);
+    });
+
+    // إذا حاول المستخدم التنقل بالكيبورد — نجعله يهرب
+    noBtn.addEventListener('focus', (e) => {
+        // نستخدم مركز الشاشة كمرجع لتحريكه بعيدًا
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        evadeFromPoint(centerX, centerY);
+        // نزيل التركيز فوراً
+        noBtn.blur();
+    });
+
+    // عند إعادة تغيير حجم النافذة نعيد وضع الزر وسط الحاوية مؤقتًا ثم نضعه في مكان عشوائي
+    window.addEventListener('resize', () => {
+        // reset then reposition
+        noBtn.style.transition = 'transform 0.12s ease-out';
+        noBtn.style.transform = 'translate(0px, 0px) rotate(0deg)';
+        setTimeout(() => {
+            setInitialPosition();
+        }, 140);
+    });
+
+    // حماية إضافية: إذا حاولت الكتابة Enter/Space على الزر عبر لوحة المفاتيح
+    noBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ' ) {
+            e.preventDefault();
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            evadeFromPoint(centerX, centerY);
+            noBtn.blur();
+        }
+    });
+
+    // نمنع إمكانية الوصول للضغط عبر pointer-events on overlay (لا حاجة overlay الآن لأننا نتحكم بالحركات)
+    // وفي حال أردت أن يتوقف الزر عن الحركة مؤقتًا ضع متغير تحقق (حالياً لا يوجد).
 }
 
 
@@ -835,17 +911,12 @@ if (noBtn) {
 /* 3. منطق زر "نعم" (رسالة تهنئة) */
 /* ======================================================= */
 
-const yesBtn = document.getElementById('yes-btn');
-
 if (yesBtn) {
     yesBtn.addEventListener('click', () => {
         alert("أعلم أنكِ ستقولين نعم! أحبكِ جدًا! بدأت قصتنا للتو ❤️");
-        // يمكن إضافة منطق آخر هنا، مثل إخفاء الأزرار أو إعادة توجيه الصفحة
     });
 }
 </script>
 
-
 </body>
 </html>
-
