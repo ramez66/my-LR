@@ -1,0 +1,550 @@
+:root {
+    --bg-dark: #1A0A0E;        /* عنابي داكن جدًا للخلفية */
+    --text-light: #F4EBD0;     /* ذهبي خفيف للنصوص */
+    --accent-velvet: #9A5868;  /* وردي مخملي كلون تأكيد */
+    --shadow-color: #3D2128;   /* لون الظل الداخلي الناعم */
+    --font-ar: 'Lateef', serif; /* خط عربي أنيق */
+    --font-en: 'Playfair Display', serif; /* خط رومنسي فاخر */
+    --transition-speed: 0.4s;  /* سرعة الانتقال الافتراضية للـ hover */
+    /* لون جديد للخلفية البراقة */
+    --bg-sparkle: #2C1318;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* تمرير ناعم للانتقال بين الأقسام */
+}
+
+body {
+    font-family: var(--font-ar);
+    color: var(--text-light);
+    background-color: var(--bg-dark);
+    line-height: 1.7;
+    overflow-x: hidden; /* لمنع ظهور شريط التمرير الأفقي */
+}
+
+/* ======================================= */
+/* 🆕 منطق منع التمرير وحجب الأقسام */
+/* ======================================= */
+
+/* الفئة التي ستُضاف إلى الـ <body> عند تحميل الصفحة */
+.scroll-locked {
+    overflow: hidden; /* منع التمرير بالكامل */
+}
+
+/* حجب جميع الأقسام ما عدا الهيدر (#intro) */
+.scroll-locked main {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none; /* لمنع التفاعل حتى بعد إظهارها */
+}
+
+/* عند إزالة الفئة، نظهر باقي الأقسام */
+body:not(.scroll-locked) main {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ======================================= */
+/* التنسيق العام للأقسام (مع تحسينات) */
+/* ======================================= */
+
+.section {
+    padding: 80px 5% 100px;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    /* خلفية ناعمة مع تدرج خفيف */
+    background: radial-gradient(circle at center, var(--bg-sparkle) 0%, var(--bg-dark) 100%);
+    border-bottom: 1px solid rgba(154, 88, 104, 0.2); /* فاصل خفيف وانيق */
+}
+
+.section-title {
+    font-family: var(--font-en);
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--accent-velvet);
+    letter-spacing: 2px;
+    text-shadow: 0 0 12px rgba(154, 88, 104, 0.7); /* إضاءة قوية خفيفة */
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--text-light);
+    border-radius: 5px;
+}
+
+/* الزر الفاخر العام */
+.luxury-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    margin-top: 20px;
+    background-color: var(--accent-velvet);
+    color: var(--text-light);
+    text-decoration: none;
+    border: 2px solid var(--accent-velvet);
+    border-radius: 50px;
+    font-family: var(--font-en);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all var(--transition-speed) ease-in-out;
+    box-shadow: 0 6px 20px rgba(154, 88, 104, 0.5); /* ظل أنيق مع لون التأكيد */
+    cursor: pointer;
+}
+
+.luxury-btn:hover {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+    border-color: var(--text-light);
+    transform: translateY(-5px) scale(1.08); /* تأثير Hover أكثر رقياً */
+    box-shadow: 0 10px 30px rgba(244, 235, 208, 0.4);
+}
+
+/* ======================================================= */
+/* 2. تنسيق شاشة الافتتاح الفاخرة (#intro) */
+/* ======================================================= */
+
+.luxury-hero {
+    min-height: 100vh;
+    justify-content: center;
+    position: relative;
+    /* خلفية داكنة مع تدرج مركزي للإيحاء بالإضاءة الخافتة */
+    background: radial-gradient(circle at center, rgba(154, 88, 104, 0.2) 0%, var(--bg-dark) 80%);
+    /* تأثير خفيف: يمكنك إضافة صورة خلفية رومانسية هنا */
+    /* background-image: url('path/to/romantic-bg.jpg'); */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 10;
+    max-width: 900px;
+    /* تحسين مركزية النص */
+    padding: 20px;
+}
+
+.hero-title {
+    font-family: var(--font-en);
+    font-size: 5.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(244, 235, 208, 1); /* إضاءة قوية جداً على النص */
+}
+
+.hero-subtitle {
+    font-size: 1.6rem;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+/* ======================================================= */
+/* 3. تنسيق قسم قصتنا (التايم لاين) (#story) */
+/* ======================================================= */
+
+.timeline-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 0 20px;
+    position: relative;
+    margin-top: 30px;
+}
+
+/* الخط الرأسي المركزي */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 4px; /* أسمك قليلاً */
+    background: linear-gradient(to bottom, var(--accent-velvet), var(--text-light)); /* تدرج لوني */
+    top: 0;
+    bottom: 0;
+    right: 50%; /* في المنتصف */
+    margin-right: -2px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    opacity: 0; /* مخفية حتى يتم تفعيل AOS */
+    transition: opacity var(--transition-speed) ease;
+}
+
+/* العناصر الفردية (يمنى ويسرى) */
+.timeline-item:nth-child(odd) {
+    right: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 0;
+    right: 50%;
+    text-align: left;
+}
+
+/* الدائرة الفاخرة كنقطة في التايم لاين */
+.timeline-item::after {
+    content: '★'; /* رمز نجمة بدل الدائرة لإضافة جمالية */
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    line-height: 25px; /* لتوسيط النجمة */
+    text-align: center;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    border: 3px solid var(--accent-velvet);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+    font-size: 1.2rem;
+    box-shadow: 0 0 10px var(--accent-velvet);
+}
+
+/* تحديد موقع الدائرة بناءً على يمين أو يسار */
+.timeline-item:nth-child(odd)::after {
+    right: -15px; /* يمين الخط */
+}
+
+.timeline-item:nth-child(even)::after {
+    right: calc(50% - 15px); /* يسار الخط */
+}
+
+.timeline-date {
+    font-family: var(--font-en);
+    color: var(--accent-velvet);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+}
+
+.timeline-content {
+    background-color: var(--shadow-color);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(0, 0, 0, 0.3);
+    border-left: 5px solid var(--accent-velvet); /* إطار جانبي أنيق */
+}
+.timeline-item:nth-child(odd) .timeline-content {
+    border-right: 5px solid var(--accent-velvet);
+    border-left: none;
+}
+
+.timeline-content h3 {
+    color: var(--text-light);
+    font-family: var(--font-en);
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+}
+
+/* ======================================================= */
+/* 4. تنسيق قسم لماذا أحبك (الكروت الأنيقة) (#why-i-love-you) */
+/* ======================================================= */
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.love-card {
+    background-color: var(--bg-sparkle); /* خلفية براقة */
+    border: 1px solid rgba(244, 235, 208, 0.3);
+    border-radius: 20px; /* زوايا أكثر استدارة */
+    padding: 35px;
+    width: 300px;
+    flex-grow: 1;
+    max-width: 350px;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    text-align: right;
+    position: relative;
+    overflow: hidden; /* لإخفاء الزوايا الزائدة عند الزخرفة */
+}
+
+.love-card::before {
+    content: '💖';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 3rem;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.love-card h3 {
+    font-family: var(--font-en);
+    color: var(--accent-velvet);
+    font-size: 1.8rem; /* أكبر قليلاً */
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(154, 88, 104, 0.7);
+    padding-bottom: 5px;
+    position: relative;
+}
+
+/* تأثير Hover راقٍ على الكروت */
+.love-card:hover {
+    transform: translateY(-10px) rotateZ(-0.7deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px var(--text-light);
+    background-color: #31151A;
+}
+
+/* ======================================================= */
+/* 5. تنسيق معرض الذكريات (Slider) (#memories) */
+/* ======================================================= */
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* أكبر قليلاً */
+    height: 500px; /* ارتفاع ثابت أكبر للمُتزلج */
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 70px rgba(0, 0, 0, 0.7);
+    border: 5px solid var(--accent-velvet); /* إطار أكثر وضوحاً */
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); /* انتقال أكثر حيوية */
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.9); /* جعل الصور أغمق قليلاً لتناسب الثيم الداكن */
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(154, 88, 104, 0.7); /* لون التأكيد */
+    color: var(--text-light);
+    border: none;
+    padding: 20px 15px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 2rem;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+.slider-btn:hover {
+    background: var(--text-light);
+    color: var(--bg-dark);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    right: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+.next-btn {
+    left: 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.slider-note {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* ======================================================= */
+/* 6. تنسيق رسالة الحب بخط اليد (#letter) */
+/* ======================================================= */
+
+.love-letter {
+    background: var(--bg-sparkle);
+}
+
+.letter-box {
+    background-color: var(--shadow-color);
+    padding: 60px; /* توسيع البادينغ */
+    border-radius: 25px;
+    max-width: 750px;
+    width: 90%;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6), inset 0 0 25px var(--bg-dark);
+    border: 3px double var(--accent-velvet); /* إطار مزدوج فاخر */
+    text-align: right;
+}
+
+.letter-title {
+    font-family: var(--font-en);
+    font-size: 2.5rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--text-light);
+    padding-bottom: 10px;
+    text-align: center;
+    text-shadow: 0 0 10px var(--accent-velvet);
+}
+
+.handwriting-text {
+    /* محاكاة لخط اليد الفاخر باستخدام خط Lateef */
+    font-family: var(--font-ar);
+    font-size: 1.5rem; /* حجم أكبر */
+    line-height: 2.5;
+    color: var(--text-light);
+    text-shadow: 0 0 7px rgba(244, 235, 208, 0.4);
+    padding-right: 20px;
+}
+
+/* ======================================================= */
+/* 7. تنسيق السؤال النهائي (#proposal) */
+/* ======================================================= */
+
+.final-question {
+    min-height: 70vh;
+    justify-content: center;
+    background: radial-gradient(circle at center, rgba(154, 88, 104, 0.5) 0%, var(--bg-dark) 100%);
+}
+
+.question-text {
+    font-family: var(--font-en);
+    font-size: 3.5rem; /* أكبر وأكثر تأثيراً */
+    color: var(--text-light);
+    margin: 50px 0;
+    text-shadow: 0 0 20px rgba(244, 235, 208, 0.9);
+}
+
+.question-buttons {
+    display: flex;
+    gap: 70px; /* مسافة أكبر */
+    margin-top: 40px;
+}
+
+.answer-btn {
+    font-size: 1.3rem;
+    padding: 18px 50px;
+    min-width: 200px;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* حركة زنبركية */
+}
+
+.yes-btn {
+    background-color: var(--accent-velvet);
+    border-color: var(--accent-velvet);
+}
+
+.yes-btn:hover {
+    background-color: #fcebeb;
+    color: var(--bg-dark);
+    transform: translateY(-10px) scale(1.15) rotateZ(-1deg);
+}
+
+.no-btn {
+    background-color: transparent;
+    border-color: var(--text-light);
+    color: var(--text-light);
+    position: relative;
+    box-shadow: 0 0 10px var(--text-light);
+}
+
+.no-btn:hover {
+    background-color: var(--shadow-color);
+    border-color: var(--accent-velvet);
+}
+
+/* ======================================================= */
+/* 8. الاستجابة (Responsive Design) */
+/* ======================================================= */
+
+@media (max-width: 900px) {
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+    
+    .timeline-container::after {
+        right: 20px;
+        left: auto;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 10px;
+        right: 0;
+        left: 0;
+        text-align: right;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+         border-right: 5px solid var(--accent-velvet);
+         border-left: none;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+         border-left: 5px solid var(--accent-velvet);
+         border-right: none;
+    }
+
+    .timeline-item::after {
+        right: 10px;
+    }
+
+    .timeline-item:nth-child(even) {
+        right: 0;
+        left: 0;
+    }
+
+    .timeline-item:nth-child(even)::after {
+        right: 10px;
+    }
+
+    .cards-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .love-card {
+        max-width: 100%;
+    }
+    
+    .slider-container {
+        height: 350px;
+    }
+
+    .question-text {
+        font-size: 2.5rem;
+    }
+
+    .question-buttons {
+        gap: 20px;
+        flex-direction: column;
+    }
+}
